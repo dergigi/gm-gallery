@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Models } from "applesauce-core";
 import { use$ } from "applesauce-react/hooks";
-import { FILTER_TERM } from "./config";
+import { INITIAL_COLOR, LABEL } from "./config";
 import { eventStore, loading$, loadGm, loadMore } from "./nostr";
 import { resolveIdentity, type Identity } from "./identity";
 import { getImages, matchesFilter } from "./content";
@@ -42,7 +42,7 @@ export default function App() {
   );
   const loading = use$(loading$);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [color, setColor] = useState<string | null>(null);
+  const [color, setColor] = useState<string | null>(INITIAL_COLOR);
   const [buckets, setBuckets] = useState<Record<string, string[]>>({});
 
   const onColors = useCallback((id: string, list: string[]) => {
@@ -87,7 +87,7 @@ export default function App() {
     return () => observer.disconnect();
   }, [hasGallery]);
 
-  const label = FILTER_TERM.toUpperCase();
+  const label = LABEL;
   const loadingText = useMemo(() => {
     const texts = [
       `It's always ${label} somewhere...`,
@@ -122,7 +122,7 @@ export default function App() {
         name={profile?.display_name || profile?.name}
       />
       <Gallery notes={withImages} activeColor={color} buckets={buckets} onColors={onColors} />
-      {color && visibleCount === 0 && (
+      {color && visibleCount === 0 && !loading && (
         <p className="state">No {color} images yet. Try loading more.</p>
       )}
       <div ref={sentinelRef} className="sentinel" />

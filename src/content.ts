@@ -15,9 +15,9 @@ export function getImages(event: NostrEvent): string[] {
   return [...new Set(urls)];
 }
 
-const TERM = new RegExp(`\\b${FILTER_TERM}\\b`, "i");
+const TERM = FILTER_TERM ? new RegExp(`\\b${FILTER_TERM}\\b`, "i") : null;
 
-/** A note matches if its content mentions the filter term as a word. */
+/** A note matches if its content mentions the filter term as a word (or if there is no term). */
 export function matchesFilter(event: NostrEvent): boolean {
-  return TERM.test(event.content);
+  return TERM ? TERM.test(event.content) : true;
 }

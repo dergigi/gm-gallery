@@ -1,4 +1,4 @@
-import { FILTER_TERM } from "../config";
+import { LABEL } from "../config";
 import { SWATCHES } from "../colors";
 import { Avatar } from "./Avatar";
 
@@ -59,7 +59,7 @@ export function ColorBar({
         target="_blank"
         rel="noreferrer"
       >
-        {FILTER_TERM.toUpperCase()}?
+        {LABEL}?
       </a>
     </div>
   );

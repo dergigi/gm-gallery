@@ -14,5 +14,11 @@ export const DISCOVERY_RELAYS = [
 
 export const LIMIT = 1000;
 
-/** The word a note must contain to show up, e.g. "gm" or "gn". */
-export const FILTER_TERM = (import.meta.env.VITE_FILTER_TERM ?? "gm").toLowerCase();
+/** The word a note must contain to show up, e.g. "gm" or "gn". Empty means match all. */
+export const FILTER_TERM = (import.meta.env.VITE_FILTER_TERM ?? "gm").trim().toLowerCase();
+
+/** A color filter to pre-select on load, e.g. "bw" or "blue". Null means none. */
+export const INITIAL_COLOR = (import.meta.env.VITE_INITIAL_COLOR ?? "").trim().toLowerCase() || null;
+
+/** Short label used in the header link and status messages. */
+export const LABEL = (FILTER_TERM || INITIAL_COLOR || "gm").toUpperCase();

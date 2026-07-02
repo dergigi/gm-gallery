@@ -33,7 +33,7 @@ export function GmCard({
         src={image}
         alt={`GM post from ${date}`}
         crossOrigin="anonymous"
-        loading="lazy"
+        loading={hidden ? "eager" : "lazy"}
         decoding="async"
         onLoad={(e) => onColors(note.id, bucketsFromImage(e.currentTarget))}
         onError={() => setBroken(true)}
