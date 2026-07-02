@@ -3,6 +3,7 @@ import { Avatar } from "./Avatar";
 
 export function ColorBar({
   present,
+  hasBW,
   active,
   onSelect,
   npub,
@@ -10,6 +11,7 @@ export function ColorBar({
   name,
 }: {
   present: Set<string>;
+  hasBW: boolean;
   active: string | null;
   onSelect: (id: string | null) => void;
   npub: string;
@@ -17,7 +19,7 @@ export function ColorBar({
   name?: string;
 }) {
   const swatches = SWATCHES.filter((swatch) => present.has(swatch.id));
-  if (swatches.length === 0 && !picture) return null;
+  if (swatches.length === 0 && !picture && !hasBW) return null;
 
   return (
     <div className="colorbar">
@@ -32,6 +34,14 @@ export function ColorBar({
           onClick={() => onSelect(active === swatch.id ? null : swatch.id)}
         />
       ))}
+      {hasBW && (
+        <button
+          className={"swatch bw" + (active === "bw" ? " active" : "")}
+          aria-label="Filter black and white"
+          title="Black & white"
+          onClick={() => onSelect(active === "bw" ? null : "bw")}
+        />
+      )}
       {active && (
         <button
           className="swatch clear"

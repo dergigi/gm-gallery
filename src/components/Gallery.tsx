@@ -1,4 +1,5 @@
 import type { NostrEvent } from "applesauce-core/helpers";
+import { matchesColor } from "../colors";
 import { GmCard } from "./GmCard";
 
 export function Gallery({
@@ -18,7 +19,7 @@ export function Gallery({
         <GmCard
           key={note.id}
           note={note}
-          hidden={!!activeColor && !buckets[note.id]?.includes(activeColor)}
+          hidden={!!activeColor && !matchesColor(buckets[note.id], activeColor)}
           onColors={onColors}
         />
       ))}

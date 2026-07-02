@@ -57,6 +57,15 @@ export function bucketOf(r: number, g: number, b: number): string {
   return "pink";
 }
 
+const NEUTRALS = ["black", "white", "gray", "darkgray"];
+
+/** Does an image (by its buckets) match a selected filter? "bw" means all-neutral. */
+export function matchesColor(buckets: string[] | undefined, color: string): boolean {
+  if (!buckets || buckets.length === 0) return false;
+  if (color === "bw") return buckets.every((bucket) => NEUTRALS.includes(bucket));
+  return buckets.includes(color);
+}
+
 /** Prominent color buckets of an already-loaded, CORS-clean image element. */
 export function bucketsFromImage(img: HTMLImageElement): string[] {
   try {

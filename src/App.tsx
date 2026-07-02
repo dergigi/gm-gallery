@@ -4,6 +4,7 @@ import { use$ } from "applesauce-react/hooks";
 import { FILTER_TERM, NPUB, PUBKEY } from "./config";
 import { eventStore, loading$, loadGm, loadMore } from "./nostr";
 import { getImages, matchesFilter } from "./content";
+import { matchesColor } from "./colors";
 import { Gallery } from "./components/Gallery";
 import { ColorBar } from "./components/ColorBar";
 
@@ -25,8 +26,9 @@ export default function App() {
     (note) => matchesFilter(note) && getImages(note).length > 0,
   );
   const present = new Set(withImages.flatMap((note) => buckets[note.id] ?? []));
+  const hasBW = withImages.some((note) => matchesColor(buckets[note.id], "bw"));
   const visibleCount = withImages.filter(
-    (note) => !color || buckets[note.id]?.includes(color),
+    (note) => !color || matchesColor(buckets[note.id], color),
   ).length;
 
   function handleLoadMore() {
@@ -59,6 +61,7 @@ export default function App() {
     <div className="app">
       <ColorBar
         present={present}
+        hasBW={hasBW}
         active={color}
         onSelect={setColor}
         npub={NPUB}
