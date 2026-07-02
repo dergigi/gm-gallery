@@ -83,8 +83,8 @@ Deploy the same repo twice, one project per domain, differing only in env vars:
 
 ```
 VITE_FILTER_TERM=gn
-VITE_SITE_TITLE=GN - Good nights from dergigi
-VITE_SITE_DESCRIPTION=A gallery of dergigi's GN posts on nostr.
+VITE_SITE_TITLE=GN
+VITE_SITE_DESCRIPTION=A gallery of GN posts on nostr.
 VITE_SITE_URL=https://gn.dergigi.com
 VITE_OG_IMAGE=/og/gn.png
 ```
