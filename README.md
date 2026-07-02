@@ -22,6 +22,12 @@ Add a user to the path to see their gallery instead of the default:
 
 Their relays are discovered from their NIP-65 list (kind 10002) via the outbox model, falling back to the discovery relays.
 
+A few examples:
+
+- [gm.dergigi.com/npub1njaz...waf3t9](https://gm.dergigi.com/npub1njazsude53reg6e7jmz6jvvgyamf5twca93sn3px3yhxpsp9yakqwaf3t9)
+- [img.dergigi.com/npub1kk0q...66xq2](https://img.dergigi.com/npub1kk0qpalwat5tclr4j9ecxqrdg2k0szvudh8nzuxmdjr4ayvwfy0qa66xq2)
+- [gif.dergigi.com/npub1ghce...eygat](https://gif.dergigi.com/npub1ghcetnluhryhynhuyj8s2pazldjm27wl40nu6dfeskvpv09twcnsneygat)
+
 ## Why build this?
 
 I like pretty things. I enjoy looking at galleries. Pretty things are why I keep posting "GM" every day, with a pretty image that resonates. 
