@@ -26,5 +26,6 @@ export const FILTER_TERM = MATCH_ALL.has(rawTerm) ? "" : rawTerm;
 /** A color filter to pre-select on load, e.g. "bw" or "blue". Null means none. */
 export const INITIAL_COLOR = (import.meta.env.VITE_INITIAL_COLOR ?? "").trim().toLowerCase() || null;
 
-/** Short label used in the header link and status messages. */
-export const LABEL = (FILTER_TERM || INITIAL_COLOR || "gm").toUpperCase();
+/** Short label used in the header link and status messages. Defaults to the term or color. */
+const rawLabel = (import.meta.env.VITE_SITE_LABEL ?? "").trim();
+export const LABEL = (rawLabel || FILTER_TERM || INITIAL_COLOR || "gm").toUpperCase();
