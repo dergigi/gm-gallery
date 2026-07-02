@@ -27,7 +27,6 @@ a {
 }
 
 .about {
-  margin-left: auto;
   font-size: 0.8rem;
   color: #9aa0a6;
   text-decoration: none;
@@ -39,11 +38,28 @@ a {
 
 .colorbar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.4rem;
   justify-content: flex-start;
   padding: 0.75rem 0 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.colorbar::-webkit-scrollbar {
+  display: none;
+}
+
+.colorbar .swatch,
+.colorbar .avatar {
+  flex: 0 0 auto;
+}
+
+.about {
+  margin-left: auto;
+  padding-left: 0.6rem;
+  white-space: nowrap;
 }
 
 .avatar {
