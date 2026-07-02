@@ -58,7 +58,6 @@ a {
 
 .linktoggle {
   position: relative;
-  margin-left: auto;
   flex: 0 0 auto;
   width: 42px;
   height: 24px;
@@ -98,7 +97,7 @@ a {
 }
 
 .about {
-  padding-left: 0.6rem;
+  margin-left: auto;
   white-space: nowrap;
 }
 

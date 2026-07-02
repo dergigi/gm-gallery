@@ -67,6 +67,14 @@ export function ColorBar({
           ×
         </button>
       )}
+      <a
+        className="about"
+        href="https://github.com/dergigi/gm-gallery"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {LABEL}?
+      </a>
       <button
         className={"linktoggle" + (native ? " on" : "")}
         role="switch"
@@ -86,14 +94,6 @@ export function ColorBar({
           })()}
         </span>
       </button>
-      <a
-        className="about"
-        href="https://github.com/dergigi/gm-gallery"
-        target="_blank"
-        rel="noreferrer"
-      >
-        {LABEL}?
-      </a>
     </div>
   );
 }
