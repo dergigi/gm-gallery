@@ -24,6 +24,16 @@ export function ColorBar({
           onClick={() => onSelect(active === swatch.id ? null : swatch.id)}
         />
       ))}
+      {active && (
+        <button
+          className="swatch clear"
+          aria-label="Clear color filter"
+          title="Clear filter"
+          onClick={() => onSelect(null)}
+        >
+          ×
+        </button>
+      )}
     </div>
   );
 }
