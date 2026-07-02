@@ -10,6 +10,8 @@ export function ColorBar({
   npub,
   picture,
   name,
+  native,
+  onToggleLink,
 }: {
   present: Set<string>;
   hasBW: boolean;
@@ -18,6 +20,8 @@ export function ColorBar({
   npub: string;
   picture?: string;
   name?: string;
+  native: boolean;
+  onToggleLink: () => void;
 }) {
   const swatches = SWATCHES.filter((swatch) => present.has(swatch.id));
   if (swatches.length === 0 && !picture && !hasBW) return null;
@@ -53,6 +57,14 @@ export function ColorBar({
           ×
         </button>
       )}
+      <button
+        className="linktoggle"
+        onClick={onToggleLink}
+        aria-label="Toggle where posts open"
+        title={`Posts open in ${native ? "your native app" : "njump"}. Click to switch.`}
+      >
+        {native ? "native" : "njump"}
+      </button>
       <a
         className="about"
         href="https://github.com/dergigi/gm-gallery"

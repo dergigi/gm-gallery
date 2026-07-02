@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Models } from "applesauce-core";
 import { use$ } from "applesauce-react/hooks";
-import { INITIAL_COLOR, LABEL } from "./config";
+import { DEFAULT_LINK_MODE, INITIAL_COLOR, LABEL } from "./config";
 import { eventStore, loading$, loadGm, loadMore } from "./nostr";
 import { resolveIdentity, type Identity } from "./identity";
 import { getImages, matchesFilter } from "./content";
@@ -44,9 +44,21 @@ export default function App() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [color, setColor] = useState<string | null>(INITIAL_COLOR);
   const [buckets, setBuckets] = useState<Record<string, string[]>>({});
+  const [native, setNative] = useState(() => {
+    const stored = localStorage.getItem("linkMode");
+    return stored ? stored === "native" : DEFAULT_LINK_MODE === "native";
+  });
 
   const onColors = useCallback((id: string, list: string[]) => {
     if (list.length) setBuckets((prev) => ({ ...prev, [id]: list }));
+  }, []);
+
+  const toggleLinkMode = useCallback(() => {
+    setNative((prev) => {
+      const next = !prev;
+      localStorage.setItem("linkMode", next ? "native" : "njump");
+      return next;
+    });
   }, []);
 
   const withImages = (notes ?? []).filter(
@@ -120,8 +132,16 @@ export default function App() {
         npub={identity?.npub ?? ""}
         picture={profile?.picture}
         name={profile?.display_name || profile?.name}
+        native={native}
+        onToggleLink={toggleLinkMode}
       />
-      <Gallery notes={withImages} activeColor={color} buckets={buckets} onColors={onColors} />
+      <Gallery
+        notes={withImages}
+        activeColor={color}
+        buckets={buckets}
+        onColors={onColors}
+        native={native}
+      />
       {color && visibleCount === 0 && !loading && (
         <p className="state">No {color} images yet. Try loading more.</p>
       )}

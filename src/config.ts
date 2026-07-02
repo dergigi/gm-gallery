@@ -29,3 +29,9 @@ export const INITIAL_COLOR = (import.meta.env.VITE_INITIAL_COLOR ?? "").trim().t
 /** Short label used in the header link and status messages. Defaults to the term or color. */
 const rawLabel = (import.meta.env.VITE_SITE_LABEL ?? "").trim();
 export const LABEL = (rawLabel || FILTER_TERM || INITIAL_COLOR || "gm").toUpperCase();
+
+export type LinkMode = "njump" | "native";
+
+/** Where a post opens by default: "njump" (web viewer) or "native" (nostr: app link). */
+const rawLinkMode = (import.meta.env.VITE_LINK_MODE ?? "njump").trim().toLowerCase();
+export const DEFAULT_LINK_MODE: LinkMode = rawLinkMode === "native" ? "native" : "njump";

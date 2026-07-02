@@ -24,11 +24,13 @@ export function Gallery({
   activeColor,
   buckets,
   onColors,
+  native,
 }: {
   notes: NostrEvent[];
   activeColor: string | null;
   buckets: Record<string, string[]>;
   onColors: (id: string, buckets: string[]) => void;
+  native: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const count = useColumnCount(ref);
@@ -47,6 +49,7 @@ export function Gallery({
               note={note}
               hidden={!!activeColor && !matchesColor(buckets[note.id], activeColor)}
               onColors={onColors}
+              native={native}
             />
           ))}
         </div>

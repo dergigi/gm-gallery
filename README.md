@@ -4,6 +4,13 @@ A view-only nostr client that shows [dergigi](https://njump.to/npub1dergggklka99
 
 Built with [applesauce](https://applesauce.build/), React, Vite and TypeScript.
 
+## Live instances
+
+- [gm.dergigi.com](https://gm.dergigi.com): GM posts.
+- [gn.dergigi.com](https://gn.dergigi.com): GN posts.
+- [bw.dergigi.com](https://bw.dergigi.com): black-and-white images.
+- [img.dergigi.com](https://img.dergigi.com): all image posts.
+
 ## Viewing other users
 
 Add a user to the path to see their gallery instead of the default:
@@ -39,6 +46,7 @@ Default user, discovery relays and fetch limit live in [`src/config.ts`](src/con
 | `VITE_FILTER_TERM` | Word a note must contain to show up. Use `*` (or `all`/`any`/`none`) to match every note | `gm` |
 | `VITE_INITIAL_COLOR` | Color filter pre-selected on load, e.g. `bw`, `blue` | none |
 | `VITE_SITE_LABEL` | Short label in the header link and status messages | the term or color |
+| `VITE_LINK_MODE` | Default target for opening a post: `njump` (web) or `native` (`nostr:` app link). Visitors can flip it in the top bar | `njump` |
 | `VITE_SITE_TITLE` | Browser tab and OG title | `GM - Good mornings from dergigi` |
 | `VITE_SITE_DESCRIPTION` | Meta and OG description | `A gallery of dergigi's GM posts on nostr.` |
 | `VITE_SITE_URL` | Canonical and OG url | `https://gm.dergigi.com` |
@@ -69,14 +77,14 @@ VITE_SITE_DESCRIPTION=A gallery of dergigi's black-and-white posts on nostr.
 VITE_SITE_URL=https://bw.dergigi.com
 ```
 
-- `images.dergigi.com`: every image post, no color pre-selected:
+- `img.dergigi.com`: every image post, no color pre-selected:
 
 ```
 VITE_FILTER_TERM=*
 VITE_SITE_LABEL=images
 VITE_SITE_TITLE=Images from dergigi
 VITE_SITE_DESCRIPTION=A gallery of dergigi's image posts on nostr.
-VITE_SITE_URL=https://images.dergigi.com
+VITE_SITE_URL=https://img.dergigi.com
 ```
 
 Then add the matching custom domain in each project's settings.

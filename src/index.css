@@ -56,8 +56,27 @@ a {
   flex: 0 0 auto;
 }
 
-.about {
+.linktoggle {
   margin-left: auto;
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  color: #9aa0a6;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.linktoggle:hover {
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.about {
   padding-left: 0.6rem;
   white-space: nowrap;
 }
