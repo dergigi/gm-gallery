@@ -50,6 +50,9 @@ Default user, discovery relays and fetch limit live in [`src/config.ts`](src/con
 | `VITE_SITE_TITLE` | Browser tab and OG title | `GM - Good mornings from dergigi` |
 | `VITE_SITE_DESCRIPTION` | Meta and OG description | `A gallery of dergigi's GM posts on nostr.` |
 | `VITE_SITE_URL` | Canonical and OG url | `https://gm.dergigi.com` |
+| `VITE_OG_IMAGE` | Social share image (1200x630). Prebuilt variants live in [`public/og/`](public/og/) | `/og/gm.png` |
+
+The share images are rendered from small HTML templates in [`scripts/`](scripts/): [`og-photo.html`](scripts/og-photo.html) lays a gallery screenshot behind the label (used for `gm`/`gn`), and [`og-template.html`](scripts/og-template.html) is the plain card used for `bw`/`img`.
 
 ## Deployment (Vercel)
 
@@ -65,6 +68,7 @@ VITE_FILTER_TERM=gn
 VITE_SITE_TITLE=GN - Good nights from dergigi
 VITE_SITE_DESCRIPTION=A gallery of dergigi's GN posts on nostr.
 VITE_SITE_URL=https://gn.dergigi.com
+VITE_OG_IMAGE=/og/gn.png
 ```
 
 - `bw.dergigi.com`: no keyword filter, black-and-white filter pre-selected, so it shows every image that is black and white. Use `*` for `VITE_FILTER_TERM` to match every note (Vercel requires a non-empty value; `*`, `all`, `any` and `none` all mean match-all):
@@ -75,6 +79,7 @@ VITE_INITIAL_COLOR=bw
 VITE_SITE_TITLE=BW - Black and white from dergigi
 VITE_SITE_DESCRIPTION=A gallery of dergigi's black-and-white posts on nostr.
 VITE_SITE_URL=https://bw.dergigi.com
+VITE_OG_IMAGE=/og/bw.png
 ```
 
 - `img.dergigi.com`: every image post, no color pre-selected:
@@ -85,6 +90,7 @@ VITE_SITE_LABEL=images
 VITE_SITE_TITLE=Images from dergigi
 VITE_SITE_DESCRIPTION=A gallery of dergigi's image posts on nostr.
 VITE_SITE_URL=https://img.dergigi.com
+VITE_OG_IMAGE=/og/img.png
 ```
 
 Then add the matching custom domain in each project's settings.
