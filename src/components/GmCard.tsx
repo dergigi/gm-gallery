@@ -14,9 +14,6 @@ export function GmCard({
   onColor: (id: string, bucket: string | null) => void;
 }) {
   const [broken, setBroken] = useState(false);
-  // Try a CORS load first so we can read pixels; fall back to a plain load
-  // (image still shows, just no color) for hosts without CORS headers.
-  const [cors, setCors] = useState(true);
 
   const image = getImages(note)[0];
   if (!image || broken) return null;
@@ -35,11 +32,11 @@ export function GmCard({
       <img
         src={image}
         alt={`GM post from ${date}`}
-        crossOrigin={cors ? "anonymous" : undefined}
+        crossOrigin="anonymous"
         loading="lazy"
         decoding="async"
-        onLoad={(e) => cors && onColor(note.id, bucketFromImage(e.currentTarget))}
-        onError={() => (cors ? setCors(false) : setBroken(true))}
+        onLoad={(e) => onColor(note.id, bucketFromImage(e.currentTarget))}
+        onError={() => setBroken(true)}
       />
     </a>
   );
