@@ -5,12 +5,12 @@ export function Gallery({
   notes,
   activeColor,
   buckets,
-  onColor,
+  onColors,
 }: {
   notes: NostrEvent[];
   activeColor: string | null;
-  buckets: Record<string, string>;
-  onColor: (id: string, bucket: string | null) => void;
+  buckets: Record<string, string[]>;
+  onColors: (id: string, buckets: string[]) => void;
 }) {
   return (
     <div className="masonry">
@@ -18,8 +18,8 @@ export function Gallery({
         <GmCard
           key={note.id}
           note={note}
-          hidden={!!activeColor && buckets[note.id] !== activeColor}
-          onColor={onColor}
+          hidden={!!activeColor && !buckets[note.id]?.includes(activeColor)}
+          onColors={onColors}
         />
       ))}
     </div>

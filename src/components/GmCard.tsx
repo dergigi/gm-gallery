@@ -2,16 +2,16 @@ import { useState } from "react";
 import { nip19 } from "nostr-tools";
 import type { NostrEvent } from "applesauce-core/helpers";
 import { getImages } from "../content";
-import { bucketFromImage } from "../colors";
+import { bucketsFromImage } from "../colors";
 
 export function GmCard({
   note,
   hidden,
-  onColor,
+  onColors,
 }: {
   note: NostrEvent;
   hidden: boolean;
-  onColor: (id: string, bucket: string | null) => void;
+  onColors: (id: string, buckets: string[]) => void;
 }) {
   const [broken, setBroken] = useState(false);
 
@@ -35,7 +35,7 @@ export function GmCard({
         crossOrigin="anonymous"
         loading="lazy"
         decoding="async"
-        onLoad={(e) => onColor(note.id, bucketFromImage(e.currentTarget))}
+        onLoad={(e) => onColors(note.id, bucketsFromImage(e.currentTarget))}
         onError={() => setBroken(true)}
       />
     </a>

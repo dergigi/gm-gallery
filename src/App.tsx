@@ -13,17 +13,19 @@ export default function App() {
   const loading = use$(loading$);
   const [loadingMore, setLoadingMore] = useState(false);
   const [color, setColor] = useState<string | null>(null);
-  const [buckets, setBuckets] = useState<Record<string, string>>({});
+  const [buckets, setBuckets] = useState<Record<string, string[]>>({});
 
-  const onColor = useCallback((id: string, bucket: string | null) => {
-    if (bucket) setBuckets((prev) => (prev[id] === bucket ? prev : { ...prev, [id]: bucket }));
+  const onColors = useCallback((id: string, list: string[]) => {
+    if (list.length) setBuckets((prev) => ({ ...prev, [id]: list }));
   }, []);
 
   const withImages = (notes ?? []).filter(
     (note) => matchesFilter(note) && getImages(note).length > 0,
   );
-  const present = new Set(withImages.map((note) => buckets[note.id]).filter(Boolean));
-  const visibleCount = withImages.filter((note) => !color || buckets[note.id] === color).length;
+  const present = new Set(withImages.flatMap((note) => buckets[note.id] ?? []));
+  const visibleCount = withImages.filter(
+    (note) => !color || buckets[note.id]?.includes(color),
+  ).length;
 
   function handleLoadMore() {
     const oldest = notes?.at(-1);
@@ -54,7 +56,7 @@ export default function App() {
   return (
     <div className="app">
       <ColorBar present={present} active={color} onSelect={setColor} />
-      <Gallery notes={withImages} activeColor={color} buckets={buckets} onColor={onColor} />
+      <Gallery notes={withImages} activeColor={color} buckets={buckets} onColors={onColors} />
       {color && visibleCount === 0 && (
         <p className="state">No {color} images yet. Try loading more.</p>
       )}

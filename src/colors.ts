@@ -1,4 +1,4 @@
-import { getColorSync } from "colorthief";
+import { getPaletteSync } from "colorthief";
 
 export interface Swatch {
   id: string;
@@ -57,14 +57,18 @@ export function bucketOf(r: number, g: number, b: number): string {
   return "pink";
 }
 
-/** Dominant color bucket of an already-loaded, CORS-clean image element. */
-export function bucketFromImage(img: HTMLImageElement): string | null {
+/** Prominent color buckets of an already-loaded, CORS-clean image element. */
+export function bucketsFromImage(img: HTMLImageElement): string[] {
   try {
-    const color = getColorSync(img);
-    if (!color) return null;
-    const { r, g, b } = color.rgb();
-    return bucketOf(r, g, b);
+    const palette = getPaletteSync(img, { colorCount: 6 });
+    if (!palette) return [];
+    const buckets = new Set<string>();
+    for (const color of palette) {
+      const { r, g, b } = color.rgb();
+      buckets.add(bucketOf(r, g, b));
+    }
+    return [...buckets];
   } catch {
-    return null;
+    return [];
   }
 }
