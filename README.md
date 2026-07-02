@@ -94,8 +94,8 @@ VITE_OG_IMAGE=/og/gn.png
 ```
 VITE_FILTER_TERM=*
 VITE_INITIAL_COLOR=bw
-VITE_SITE_TITLE=BW - Black and white from dergigi
-VITE_SITE_DESCRIPTION=A gallery of dergigi's black-and-white posts on nostr.
+VITE_SITE_TITLE=BW
+VITE_SITE_DESCRIPTION=A gallery of black-and-white posts on nostr.
 VITE_SITE_URL=https://bw.dergigi.com
 VITE_OG_IMAGE=/og/bw.png
 ```
