@@ -20,7 +20,7 @@ export default function App() {
       {gms.length > 0 ? (
         <Gallery notes={gms} />
       ) : loading ? (
-        <p className="state">Loading {label}s...</p>
+        <p className="state">It's always {label} somewhere...</p>
       ) : (
         <p className="state">No {label} posts found.</p>
       )}
