@@ -105,8 +105,8 @@ VITE_OG_IMAGE=/og/bw.png
 ```
 VITE_FILTER_TERM=*
 VITE_SITE_LABEL=img
-VITE_SITE_TITLE=Images from dergigi
-VITE_SITE_DESCRIPTION=A gallery of dergigi's image posts on nostr.
+VITE_SITE_TITLE=Images
+VITE_SITE_DESCRIPTION=A gallery of image posts on nostr.
 VITE_SITE_URL=https://img.dergigi.com
 VITE_OG_IMAGE=/og/img.png
 ```
