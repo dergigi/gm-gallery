@@ -89,7 +89,7 @@ export function ColorBar({
       </button>
       <a
         className="about"
-        href="https://github.com/dergigi/gm-gallery"
+        href="https://github.com/dergigi/gm-gallery/#why-build-this"
         target="_blank"
         rel="noreferrer"
       >
