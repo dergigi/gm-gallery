@@ -1,3 +1,4 @@
+import { FILTER_TERM } from "../config";
 import { SWATCHES } from "../colors";
 import { Avatar } from "./Avatar";
 
@@ -58,7 +59,7 @@ export function ColorBar({
         target="_blank"
         rel="noreferrer"
       >
-        What is this?
+        {FILTER_TERM.toUpperCase()}?
       </a>
     </div>
   );
