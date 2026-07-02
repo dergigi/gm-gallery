@@ -92,6 +92,12 @@
         color: rgba(255, 255, 255, 0.78);
         margin-top: 8px;
       }
+      .site {
+        font-size: 26px;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.72);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      }
     </style>
   </head>
   <body>
@@ -102,6 +108,7 @@
       <div>
         <div class="label" id="label"></div>
         <div class="tagline" id="tagline"></div>
+        <div class="site" id="site"></div>
       </div>
     </div>
     <script>
@@ -125,11 +132,16 @@
       const p = new URLSearchParams(location.search);
       if ((p.get("fit") || "cover") === "contain") document.body.classList.add("contain");
       document.getElementById("bg").src = p.get("bg") || "";
-      const g = GLYPHS[p.get("glyph") || "image"];
-      document.getElementById("glyph").innerHTML =
-        '<svg viewBox="' + g.vb + '"><path fill="' + g.color + '" d="' + g.d + '"/></svg>';
+      const glyph = document.getElementById("glyph");
+      if (p.has("glyph") && GLYPHS[p.get("glyph")]) {
+        const g = GLYPHS[p.get("glyph")];
+        glyph.innerHTML = '<svg viewBox="' + g.vb + '"><path fill="' + g.color + '" d="' + g.d + '"/></svg>';
+      } else {
+        glyph.remove();
+      }
       document.getElementById("label").textContent = p.get("label") || "";
       document.getElementById("tagline").textContent = p.get("tagline") || "";
+      document.getElementById("site").textContent = p.get("site") || "";
     </script>
   </body>
 </html>
