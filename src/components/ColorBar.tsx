@@ -67,6 +67,7 @@ export function ColorBar({
           ×
         </button>
       )}
+      <span className="bar-sep" aria-hidden="true" />
       <button
         className={"linktoggle" + (native ? " on" : "")}
         role="switch"
