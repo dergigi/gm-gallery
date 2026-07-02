@@ -65,8 +65,8 @@ Default user, discovery relays and fetch limit live in [`src/config.ts`](src/con
 | `VITE_IMAGE_EXT` | Only show images with this file extension, e.g. `gif` | any image |
 | `VITE_SITE_LABEL` | Short label in the header link and status messages | the term or color |
 | `VITE_LINK_MODE` | Default target for opening a post: `njump` (web) or `native` (`nostr:` app link). Visitors can flip it in the top bar | `njump` |
-| `VITE_SITE_TITLE` | Browser tab and OG title | `GM - Good mornings from dergigi` |
-| `VITE_SITE_DESCRIPTION` | Meta and OG description | `A gallery of dergigi's GM posts on nostr.` |
+| `VITE_SITE_TITLE` | Browser tab and OG title | `GM` |
+| `VITE_SITE_DESCRIPTION` | Meta and OG description | `A gallery of GM posts on nostr.` |
 | `VITE_SITE_URL` | Canonical and OG url | `https://gm.dergigi.com` |
 | `VITE_OG_IMAGE` | Social share image (1200x630). Prebuilt variants live in [`public/og/`](public/og/) | `/og/gm.png` |
 
