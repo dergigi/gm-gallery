@@ -22,6 +22,16 @@ Add a user to the path to see their gallery instead of the default:
 
 Their relays are discovered from their NIP-65 list (kind 10002) via the outbox model, falling back to the discovery relays.
 
+## Why build this?
+
+I like pretty things. I enjoy looking at galleries. Pretty things are why I keep posting "GM" every day, with a pretty image that resonates. 
+
+I love nostr, and it's incredibly easy to build stuff on top of it, so here we are. Maybe this little gallery client inspires someone to make their own client a little better. I think clients could be better in terms of filtering, in terms of gallery views, in terms of how media is presented (and sorted, and shared, and displayed, etc).
+
+I might build a general-purpose gallery one day. But for now, GM it is. Bound to a profile. However, keep in mind that the other instances (img, bw, gif) use other filters that might be useful too, and also keep in mind that you can very easily point the thing to your npub (by appending your npub or NIP-05 to the URL). 
+
+Enjoy!
+
 ## How it works
 
 - The identity is read from the URL path and resolved to a pubkey and their relays.
@@ -108,13 +118,3 @@ VITE_OG_IMAGE=/og/gif.png
 ```
 
 Then add the matching custom domain in each project's settings.
-
-## Why build this?
-
-I like pretty things. I enjoy looking at galleries. Pretty things are why I keep posting "GM" every day, with a pretty image that resonates. 
-
-I love nostr, and it's incredibly easy to build stuff on top of it, so here we are. Maybe this little gallery client inspires someone to make their own client a little better. I think clients could be better in terms of filtering, in terms of gallery views, in terms of how media is presented (and sorted, and shared, and displayed, etc).
-
-I might build a general-purpose gallery one day. But for now, GM it is. Bound to a profile. However, keep in mind that the other instances (img, bw, gif) use other filters that might be useful too, and also keep in mind that you can very easily point the thing to your npub (by appending your npub or NIP-05 to the URL). 
-
-Enjoy!
