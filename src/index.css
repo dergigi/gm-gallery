@@ -57,23 +57,49 @@ a {
 }
 
 .linktoggle {
+  position: relative;
   margin-left: auto;
   flex: 0 0 auto;
-  background: transparent;
+  width: 36px;
+  height: 18px;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  padding: 0.15rem 0.55rem;
-  color: #9aa0a6;
-  font-size: 0.72rem;
-  line-height: 1.2;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  white-space: nowrap;
-  transition: color 0.1s ease, border-color 0.1s ease;
+  transition: background 0.15s ease;
 }
 
-.linktoggle:hover {
-  color: #f5f5f5;
-  border-color: rgba(255, 255, 255, 0.35);
+.linktoggle.on {
+  background: #3aa93a;
+}
+
+.linktoggle .knob {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.linktoggle.on .knob {
+  transform: translateX(18px);
+}
+
+.linktoggle .knob svg {
+  width: 9px;
+  height: 9px;
+  display: block;
+}
+
+.linktoggle .knob svg path {
+  fill: #111;
 }
 
 .about {
