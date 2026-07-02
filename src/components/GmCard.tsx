@@ -13,7 +13,7 @@ export function GmCard({ note }: { note: NostrEvent }) {
   const date = new Date(note.created_at * 1000).toLocaleDateString();
 
   return (
-    <a className="card" href={`https://njump.me/${nevent}`} target="_blank" rel="noreferrer">
+    <a className="card" href={`https://njump.to/${nevent}`} target="_blank" rel="noreferrer">
       <img
         src={image}
         alt={`GM post from ${date}`}
